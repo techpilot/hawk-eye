@@ -1,0 +1,10 @@
+ImageHash~=4.2.1
+Pillow~=9.0.1
+numpy~=1.21.5
+PyQt5~=5.15.6
+opencv-contrib-python~=4.5.5
+scipy~=1.7.3
+collection~=0.1.6
+PyWavelets~=1.2.0
+#yolov3-tiny.weights
+#yolov3-tiny.cfg
