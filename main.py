@@ -153,8 +153,8 @@ class NewWindow(QDialog):
         de_main(0)
 
     def sound_alarm(self):
-        # alarm(self.slot.cap)
-        print(self.slot)
+        alarm(self.link)
+        # print(self.slot)
 
     def sizeHint(self) -> QSize:
         return QSize(width // 3, height // 3)
