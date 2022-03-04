@@ -147,10 +147,10 @@ class NewWindow(QDialog):
         layout.addWidget(self.alarmBTN)
 
         self.setLayout(layout)
-        self.setWindowTitle('Hawkeye {}'.format(self.index))
+        self.setWindowTitle('Hawk-eye {}'.format(self.index))
 
     def send_email(self):
-        de_main(0)
+        de_main(0)  # only sends images from live cameras
 
     def sound_alarm(self):
         alarm(self.link)
@@ -263,7 +263,7 @@ class Window(QWidget):
         timer_th.start(6000 * 60 * 3)
 
         self.setLayout(layout)
-        self.setWindowTitle('hawkeyes')
+        self.setWindowTitle('hawk-eyes')
 
         # cam_id, link, active = self.cameras[index]
 
@@ -286,9 +286,9 @@ class Window(QWidget):
     def showCam(self, index: Any) -> None:
         self.newWindow.index = index
         if not self.cameras[index][2]:
-            text_ = "Hawkeye {}\nNot active".format(self.cameras[index][0])
+            text_ = "Hawk-eye 00{}\nNot active".format(self.cameras[index][0])
             self.newWindow.label.setText(text_)
-        self.newWindow.setWindowTitle('Hawkeye {}'.format(self.cameras[index][0]))
+        self.newWindow.setWindowTitle('Hawk-eye {}'.format(self.cameras[index][0]))
         self.newWindow.show()
 
     def showTime(self) -> None:
@@ -302,7 +302,7 @@ class Window(QWidget):
         for index, value in self.cameras.items():
             cam_id, link, active = value
             if not active:
-                text_ = "Hawkeye{}\n".format(cam_id) + text
+                text_ = "Hawk-eye{}\n".format(cam_id) + text
                 self.labels[index].setText(text_)
 
     @pyqtSlot(np.ndarray, int, int, bool)
