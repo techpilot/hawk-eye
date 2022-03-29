@@ -39,13 +39,14 @@ class Slot(QThread):
         cap = cv2.VideoCapture(self.link)
 
         # Object Detection
-        whT = 320
-        modelConfiguration = 'yolov3-tiny.cfg'
-        modelWeights = './yolo/yolov3-tiny.weights'
-
-        net = cv2.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
-        net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
-        net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+        # whT = 320
+        # modelConfiguration = 'yolov3-tiny.cfg'
+        # modelWeights = './yolo/yolov3-tiny.weights'
+        #
+        # net = cv2.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
+        # net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+        # net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+        # ----------------------------------------------------
 
         while cap.isOpened():
             # print("CAP", cap)
@@ -76,18 +77,19 @@ class Slot(QThread):
                 # cv2.drawContours(im, contours, -1, (0, 0, 255), 2)
 
             # Object Detection
-            blob = cv2.dnn.blobFromImage(im, 1 / 255, (whT, whT), [0, 0, 0], 1, crop=False)
-            net.setInput(blob)
-
-            layerNames = net.getLayerNames()
-            print(layerNames)
-            outputNames = [layerNames[i - 1] for i in net.getUnconnectedOutLayers()]
-            print(outputNames)
-            print(net.getUnconnectedOutLayers())
-
-            outputs = net.forward(outputNames)
-            print(outputs[0][0])
-            findObjects(outputs, im)
+            # blob = cv2.dnn.blobFromImage(im, 1 / 255, (whT, whT), [0, 0, 0], 1, crop=False)
+            # net.setInput(blob)
+            #
+            # layerNames = net.getLayerNames()
+            # print(layerNames)
+            # outputNames = [layerNames[i - 1] for i in net.getUnconnectedOutLayers()]
+            # print(outputNames)
+            # print(net.getUnconnectedOutLayers())
+            #
+            # outputs = net.forward(outputNames)
+            # print(outputs[0][0])
+            # findObjects(outputs, im)
+            # ----------------------------------------------------------------------
 
             im = cv2.resize(im, (w, h))
             self.signal.emit(im, self.index, self.cam_id, True)
